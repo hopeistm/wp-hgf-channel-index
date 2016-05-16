@@ -136,7 +136,7 @@
               'on'  => esc_html__( 'Yes', 'et_builder' ),
               'off' => esc_html__( 'No', 'et_builder' ),
             ),
-            'description'        => esc_html__( 'Turn project titles on or off.', 'et_builder' ),
+            'description'        => esc_html__( 'Turn Video titles on or off.', 'et_builder' ),
           ),
           'show_categories' => array(
             'label'             => esc_html__( 'Show Categories', 'et_builder' ),
@@ -274,7 +274,7 @@
         if ( '' !== $include_categories ) {
           $args['tax_query'] = array(
             array(
-              'taxonomy' => 'project_category',
+              'taxonomy' => 'hgf_video_category',
               'field' => 'id',
               'terms' => explode( ',', $include_categories ),
               'operator' => 'IN'
@@ -291,7 +291,7 @@
             $videos->the_post();
 
             $category_classes = array();
-            $categories = get_the_terms( get_the_ID(), 'project_category' );
+            $categories = get_the_terms( get_the_ID(), 'hgf_video_category' );
             if ( $categories ) {
               foreach ( $categories as $category ) {
                 $category_classes[] = 'project_category_' . urldecode( $category->slug );
@@ -377,11 +377,11 @@
           'orderby' => 'name',
           'order' => 'ASC',
         );
-        $terms = get_terms( 'project_category', $terms_args );
+        $terms = get_terms( 'hgf_video_category', $terms_args );
 
         $category_filters = '<ul class="clearfix">';
         $category_filters .= sprintf( '<li class="et_pb_portfolio_filter et_pb_portfolio_filter_all"><a href="#" class="active" data-category-slug="all">%1$s</a></li>',
-                                     esc_html__( 'All', 'et_builder' )
+                                     esc_html__( 'Latest', 'et_builder' )
                                     );
         foreach ( $terms as $term  ) {
           $category_filters .= sprintf( '<li class="et_pb_portfolio_filter"><a href="#" data-category-slug="%1$s">%2$s</a></li>',
@@ -393,27 +393,25 @@
 
         $class = " et_pb_module et_pb_bg_layout_{$background_layout}";
 
-        // $output = sprintf(
-        //   '<div%5$s class="et_pb_filterable_portfolio %1$s%4$s%6$s" data-posts-number="%7$d"%10$s>
-        // <div class="et_pb_portfolio_filters clearfix">%2$s</div><!-- .et_pb_portfolio_filters -->
         $output = sprintf(
-          '<div%5$s class="et_pb_filterable_portfolio %1$s%4$s%6$s" data-posts-number="%7$d"%10$s>
+            '<div%5$s class="et_pb_filterable_portfolio %1$s%4$s%6$s" data-posts-number="%7$d"%10$s>
+                <div class="et_pb_portfolio_filters clearfix">%2$s</div><!-- .et_pb_portfolio_filters -->
 
-        <div class="et_pb_portfolio_items_wrapper %8$s">
-          <div class="et_pb_portfolio_items">%3$s</div><!-- .et_pb_portfolio_items -->
-        </div>
-        %9$s
-      </div> <!-- .et_pb_filterable_portfolio -->',
-          ( 'on' === $fullwidth ? 'et_pb_filterable_portfolio_fullwidth' : 'et_pb_filterable_portfolio_grid clearfix' ),
-          $category_filters,
-          $posts,
-          esc_attr( $class ),
-          ( '' !== $module_id ? sprintf( ' id="%1$s"', esc_attr( $module_id ) ) : '' ),
-          ( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' ),
-          esc_attr( $posts_number),
-          ('on' === $show_pagination ? '' : 'no_pagination' ),
-          ('on' === $show_pagination ? '<div class="et_pb_portofolio_pagination"></div>' : '' ),
-          is_rtl() ? ' data-rtl="true"' : ''
+                <div class="et_pb_portfolio_items_wrapper %8$s">
+                    <div class="et_pb_portfolio_items">%3$s</div><!-- .et_pb_portfolio_items -->
+                </div>
+                %9$s
+            </div> <!-- .et_pb_filterable_portfolio -->',
+            ( 'on' === $fullwidth ? 'et_pb_filterable_portfolio_fullwidth' : 'et_pb_filterable_portfolio_grid clearfix' ),
+            $category_filters,
+            $posts,
+            esc_attr( $class ),
+            ( '' !== $module_id ? sprintf( ' id="%1$s"', esc_attr( $module_id ) ) : '' ),
+            ( '' !== $module_class ? sprintf( ' %1$s', esc_attr( $module_class ) ) : '' ),
+            esc_attr( $posts_number),
+            ('on' === $show_pagination ? '' : 'no_pagination' ),
+            ('on' === $show_pagination ? '<div class="et_pb_portofolio_pagination"></div>' : '' ),
+            is_rtl() ? ' data-rtl="true"' : ''
         );
 
         return $output;
