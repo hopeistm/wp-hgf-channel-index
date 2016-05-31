@@ -374,14 +374,14 @@
         $categories_included = explode ( ',', $include_categories );
         $terms_args = array(
           'include' => $categories_included,
-          'orderby' => 'name',
+          'orderby' => 'description',
           'order' => 'ASC',
         );
         $terms = get_terms( 'hgf_video_category', $terms_args );
 
         $category_filters = '<ul class="clearfix">';
         $category_filters .= sprintf( '<li class="et_pb_portfolio_filter et_pb_portfolio_filter_all"><a href="#" class="active" data-category-slug="all">%1$s</a></li>',
-                                     esc_html__( 'Latest', 'et_builder' )
+                                     esc_html__( 'All', 'et_builder' )
                                     );
         foreach ( $terms as $term  ) {
           $category_filters .= sprintf( '<li class="et_pb_portfolio_filter"><a href="#" data-category-slug="%1$s">%2$s</a></li>',
