@@ -16,6 +16,7 @@ function Custom_Module()
         include 'hgf-channel-custom-module.php';
         include 'hgf-channel-video-carousel.php';
     }
+    wp_enqueue_style( hgf-channel, plugins_url( 'style.css', __FILE__ ));
 }
 
 function Prep_Custom_Module()

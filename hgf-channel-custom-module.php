@@ -341,7 +341,7 @@
             )
               : '';
 
-            printf( '<span class="et_overlay%1$s"%2$s><div class="hgf-video-thumbnail-title">%3$s<hr></div></span>', ( '' !== $hover_icon ? ' et_pb_inline_icon' : '' ), $data_icon, $titletext);
+            printf( '<span class="et_overlay hgf-channel-video-overlay%1$s"%2$s><div class="hgf-video-thumbnail-title">%3$s<hr></div></span>', ( '' !== $hover_icon ? ' et_pb_inline_icon' : '' ), $data_icon, $titletext);
             ?>
     </span>
   </a>

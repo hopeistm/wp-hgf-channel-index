@@ -59,7 +59,7 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
 
     $this->custom_css_options = array(
       'portfolio_title' => array(
-        'label'    => esc_html__( 'Portfolio Title', 'et_builder' ),
+        'label'    => esc_html__( 'Video Carousel Title', 'et_builder' ),
         'selector' => '> h2',
       ),
       'portfolio_item' => array(
@@ -97,10 +97,10 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
   function get_fields() {
     $fields = array(
       'title' => array(
-        'label'           => esc_html__( 'Portfolio Title', 'et_builder' ),
+        'label'           => esc_html__( 'Video Carousel Title', 'et_builder' ),
         'type'            => 'text',
         'option_category' => 'basic_option',
-        'description'     => esc_html__( 'Title displayed above the portfolio.', 'et_builder' ),
+        'description'     => esc_html__( 'Title displayed above the video carousel.', 'et_builder' ),
       ),
       'fullwidth' => array(
         'label'             => esc_html__( 'Layout', 'et_builder' ),
@@ -125,7 +125,7 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
         'label'           => esc_html__( 'Posts Number', 'et_builder' ),
         'type'            => 'text',
         'option_category' => 'configuration',
-        'description'     => esc_html__( 'Control how many projects are displayed. Leave blank or use 0 to not limit the amount.', 'et_builder' ),
+        'description'     => esc_html__( 'Control how many videos are displayed. Leave blank or use 0 to not limit the amount.', 'et_builder' ),
       ),
       'show_title' => array(
         'label'             => esc_html__( 'Show Title', 'et_builder' ),
@@ -135,7 +135,7 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
           'on'  => esc_html__( 'Yes', 'et_builder' ),
           'off' => esc_html__( 'No', 'et_builder' ),
         ),
-        'description'        => esc_html__( 'Turn project titles on or off.', 'et_builder' ),
+        'description'        => esc_html__( 'Turn video titles on or off.', 'et_builder' ),
       ),
       'show_date' => array(
         'label'             => esc_html__( 'Show Date', 'et_builder' ),
@@ -283,7 +283,7 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
     if ( '' !== $include_categories ) {
       $args['tax_query'] = array(
         array(
-          'taxonomy' => 'project_category',
+          'taxonomy' => 'hgf_video_category',
           'field' => 'id',
           'terms' => explode( ',', $include_categories ),
           'operator' => 'IN'
@@ -291,12 +291,12 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
       );
     }
 
-    $projects = et_divi_get_projects( $args );
+    $videos = et_divi_get_hgf_videos( $args );
 
     ob_start();
-    if( $projects->post_count > 0 ) {
-      while ( $projects->have_posts() ) {
-        $projects->the_post();
+    if( $videos->post_count > 0 ) {
+      while ( $videos->have_posts() ) {
+        $videos->the_post();
         ?>
         <div id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_portfolio_item et_pb_grid_item ' ); ?>>
         <?php
@@ -311,11 +311,19 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
           list($thumb_src, $thumb_width, $thumb_height) = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), array( $width, $height ) );
 
           $orientation = ( $thumb_height > $thumb_width ) ? 'portrait' : 'landscape';
+          $video_title = get_the_title();
+          $max_characters = 50;
+
+          if (strlen($video_title) > $max_characters) {
+            $video_title = mb_strimwidth($video_title, 0, $max_characters, "...");
+            // $video_title = substr($video_title, 0, $max_characters). "...";
+          }
+          // $video_title = mb_strwidth();
 
           if ( '' !== $thumb_src ) : ?>
             <div class="et_pb_portfolio_image <?php echo esc_attr( $orientation ); ?>">
               <img src="<?php echo esc_url( $thumb_src ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"/>
-              <div class="meta">
+              <div class="meta display_always">
                 <a href="<?php esc_url( the_permalink() ); ?>">
                 <?php
                   $data_icon = '' !== $hover_icon
@@ -325,14 +333,12 @@ class CHILD_ET_Builder_Module_HGF_Channel_Carousel extends ET_Builder_Module {
                     )
                     : '';
 
-                  printf( '<span class="et_overlay%1$s"%2$s></span>',
+                  printf( '<span class="et_overlay%1$s display_always hgf-front-page-video-overlay"%2$s>%3$s</span>',
                     ( '' !== $hover_icon ? ' et_pb_inline_icon' : '' ),
-                    $data_icon
+                    $data_icon,
+                    ( 'on' === $show_title ? '<h3>' . $video_title . '</h3>' : '')
                   );
                 ?>
-                  <?php if ( 'on' === $show_title ) : ?>
-                    <h3><?php the_title(); ?></h3>
-                  <?php endif; ?>
 
                   <?php if ( 'on' === $show_date ) : ?>
                     <p class="post-meta"><?php echo get_the_date(); ?></p>
