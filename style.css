@@ -37,7 +37,6 @@ body .hgf-video-social-list{
 /*social icons*/
 /*
 =======
->>>>>>> 35bb5926c58cf8038c55084b000a57eafd6fb283
 .hgf-video-social-column .et_pb_social_media_follow li a.icon{
   height: 40px;
   width: 40px;
@@ -49,10 +48,6 @@ body .hgf-video-social-list{
   font-size: 25px;
 }
 */
-
-.hgf-video-social-column .et_pb_social_media_follow li a.icon::before{
-  font-size: 25px;
-}
 
 .hgf-video-fb-embed-row{
   padding: 4% 0;
