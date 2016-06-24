@@ -35,14 +35,27 @@ body .hgf-video-social-list{
 }
 
 /*social icons*/
+<<<<<<< HEAD
+/*
+=======
+>>>>>>> 35bb5926c58cf8038c55084b000a57eafd6fb283
 .hgf-video-social-column .et_pb_social_media_follow li a.icon{
   height: 40px;
   width: 40px;
   padding: 4px;
 }
+<<<<<<< HEAD
+*/
+/*
 .hgf-video-social-column .et_pb_social_media_follow li a.icon::before{
   font-size: 25px;
 }
+*/
+=======
+.hgf-video-social-column .et_pb_social_media_follow li a.icon::before{
+  font-size: 25px;
+}
+>>>>>>> 35bb5926c58cf8038c55084b000a57eafd6fb283
 
 .hgf-video-fb-embed-row{
   padding: 4% 0;
@@ -86,6 +99,13 @@ span.hgf-front-page-video-overlay{
   left: 8% !important;
 }
 
+<<<<<<< HEAD
+.et-pb-arrow-prev .et-pb-arrow-next{
+  color: #fff;
+}
+
+=======
+>>>>>>> 35bb5926c58cf8038c55084b000a57eafd6fb283
 /*individual grid items*/
 @media (min-width: 981px){
   .hgf-channel-grid-item{
@@ -101,6 +121,156 @@ span.hgf-front-page-video-overlay{
   }
 }
 
+<<<<<<< HEAD
+.single-hgf_video .hgf-video-title {
+  /*color: blue;*/
+  line-height: 1.3em;
+}
+
+.single-hgf_video .hgf-video-speaker-name{
+  color: #0065a1;
+}
+
+.single-hgf_video .hgf-video-social-media-banner{
+  background-color: #D8D8D8;
+  font-weight: bold;
+  padding: 0;
+}
+
+.hgf-video-social-media-banner h2 {
+  font-weight: 700;
+  padding-bottom: 0;
+  vertical-align: middle;
+  line-height: 40px;
+  /*height: 100%;*/
+}
+
+.single-hgf_video .hgf-video-wrapper{
+  padding: 0;
+}
+
+.single-hgf_video .hgf-video-social-list{
+  padding-left: 0;
+}
+.single-hgf_video .hgf-video-social-list li{
+  list-style-type: none;
+  line-height: 20px;
+}
+
+.hgf-video-social-column{
+  /*padding-top: 4px;*/
+}
+
+/*social icons*/
+.et_pb_social_media_follow li a.icon{
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+}
+
+.et_pb_social_media_follow li a.icon::before{
+  font-size: 25px;
+}
+
+.hgf-video-fb-embed-row{
+  padding: 4% 0;
+}
+
+.hgf-video-back-social{
+  margin-top: 20%;
+}
+
+.hgf-video-back-button{
+  /*display: block;*/
+  /*margin-top: 20%;*/
+  font-size: 13px;
+  color: #828F9D;
+  font-weight: 600;
+  width: 50%;
+}
+
+.hgf-video-social-wrapper{
+  float: right;
+}
+
+/*monarch container*/
+.single-hgf_video .et_social_inline{
+  width: 80px;
+  float: right;
+  line-height: 0;
+  /*margin-bottom: -25px;*/
+  height: auto !important;
+}
+
+/*push social icons margin down to match back button*/
+.single-hgf_video .et_social_inline_bottom{
+  margin-top: 20% !important;
+}
+
+/*negative margin to top align social buttons with back button*/
+.single-hgf_video .et_social_networks{
+  margin-top: -24% !important;
+}
+
+/*reduce social link padding*/
+.single-hgf_video .et_social_share{
+  padding: 0 !important;
+  border:none !important;
+  width: 30px !important;
+  margin-right: 0;
+}
+
+.single-hgf_video .et_social_overlay{
+  width: 0 !important;
+}
+
+/*SHARE text*/
+.single-hgf_video .hgf-video-share-label{
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #828F9D;
+  margin-bottom: -10px;
+}
+
+/*reduce social icon size*/
+.single-hgf_video .et_social_icon{
+  width: 25px !important;
+  height: 40px !important;
+  letter-spacing: 10px;
+  color:#828F9D !important;
+  background-color: initial !important;
+  line-height: 10px !important;
+
+}
+
+.single-hgf_video .et_social_icon:before{
+  font-size: 22px !important;
+  line-height: 48px !important;
+}
+
+/*hide all icons besides facebook and twitter*/
+.single-hgf_video .et_social_googleplus, .single-hgf_video .et_social_pinterest, .single-hgf_video .et_social_pinterest, .single-hgf_video .et_social_linkedin{
+  display: none !important;
+}
+
+/*reduce top margin on hr beneath the back-social menu*/
+.back-social-linebreak{
+  margin-top: 3px;
+  width: 100%;
+}
+
+.bottom-div{
+  height: 300px;
+}
+
+.single-hgf_video .et_social_networks.et_social_nospace li{
+  width: 50% !important;
+}
+
+
+=======
+>>>>>>> 35bb5926c58cf8038c55084b000a57eafd6fb283
 @media (max-width: 980px) {
   .hgf-channel-grid-item{
     width: 31.6% !important;
@@ -127,6 +297,13 @@ span.hgf-front-page-video-overlay{
     width: 100% !important;
     margin: 0 0 11.5% 0 !important;
   }
+<<<<<<< HEAD
+  /*fix social media icon alignment on mobile*/
+  .single-hgf_video .et_social_icons_container{
+    display: flex !important;
+  }
+=======
+>>>>>>> 35bb5926c58cf8038c55084b000a57eafd6fb283
 }
 
 .et_pb_portfolio_item.hgf-channel-grid-item.last_in_row {
